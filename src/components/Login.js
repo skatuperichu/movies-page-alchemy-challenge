@@ -4,7 +4,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate(); //como es un Hook lo guardo en una variable
-  console.log(navigate);
+
   const submitHandler = (e) => {
     e.preventDefault(); //el metodo preventDeafult evita que se refresque la pagina cdo se haga click en el form
 
@@ -58,7 +58,7 @@ function Login() {
     <>
       <div className="row">
         <div className="col-6 offset-3">
-          <h2>Formulario de login</h2>
+          <h3>Iniciar sesión</h3>
           <form onSubmit={submitHandler}>
             <label className="form-label d-block mt-2">
               <span>Correo electronico:</span> <br />
@@ -74,7 +74,9 @@ function Login() {
               ></input>
             </label>
             <br />
-            <button type="submit">Ingresar</button>
+            <button type="submit" className="btn btn-dark">
+              Ingresar
+            </button>
           </form>
         </div>
       </div>

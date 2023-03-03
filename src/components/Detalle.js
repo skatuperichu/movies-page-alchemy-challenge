@@ -2,6 +2,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
+import "../styles/body.css";
 
 function Detalle() {
   let token = sessionStorage.getItem("token");
@@ -35,8 +36,10 @@ function Detalle() {
     <>
       {!token && <Navigate to="/" />}
       {!movie && ( // condicional para: si no tengo movie, mostra el spinner (que es el cosito de Cargando.. de bootstrap)
-        <div class="spinner-border text-warning" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-container">
+          <div class="spinner-border text-warning " role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
       )}
       {movie && ( //en este caso utilizo un condicional. como el state comienza null, si tengo movie mostrame todo lo siguiente. es una accion asincronica.
@@ -46,8 +49,8 @@ function Detalle() {
             <div className="col-md-4">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                className="card-img-top"
-                alt="..."
+                className="img-thumbnail"
+                alt="movie"
               />
             </div>
             <div className="col-md-8">
@@ -67,13 +70,18 @@ function Detalle() {
                 <li>
                   <h>
                     <b>Géneros: </b>
+                    <ul>
+                      {movie.genres.map((oneGenre) => (
+                        <li key={oneGenre.id}>{oneGenre.name}</li>
+                      ))}
+                    </ul>
                   </h>
                 </li>
                 <hr />
                 <li>
                   <p>
                     <i>
-                      Para más información ingresa{" "}
+                      Para más información ingresa
                       <Link to={`${movie.homepage}`}>aquí</Link>
                     </i>
                   </p>

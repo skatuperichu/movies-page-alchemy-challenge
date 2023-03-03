@@ -1,4 +1,4 @@
-.li-nav-item {
+/*.li-nav-item {
   font-family: "Courier New", Courier, monospace;
 }
 
@@ -9,4 +9,33 @@
 
 .nav-link {
   color: black;
+}*/
+
+.body-container {
+  padding-bottom: 30px;
+}
+
+.spinner-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-text1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: teal;
+  font-size: 70px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.home-text2 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 60px;
+}
+.home-text3 {
+  margin-top: 30px;
+  text-align: center;
 }
