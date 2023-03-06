@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
 
-function Listado() {
+function Listado(props) {
   let token = sessionStorage.getItem("token"); // el token puede ser un string o null.
-
+  console.log(props);
   //LLAMADA A LA API:
 
   const [moviesList, setMoviesList] = useState([]);
@@ -17,6 +17,7 @@ function Listado() {
       .get(endPoint)
       .then((response) => {
         const dataDeLaApi = response.data;
+        console.log(dataDeLaApi);
         setMoviesList(dataDeLaApi.results);
       })
       .catch((error) => {
@@ -40,16 +41,22 @@ function Listado() {
       <div className="row">
         {moviesList.map((oneMovie, indice) => {
           return (
-            <div className="col-md-3" key={indice}>
+            <div className="col-md-4" key={indice}>
               <div className="card my-4">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
                   className="card-img-top"
                   alt="..."
                 />
+                <button
+                  className="favourite-btn"
+                  onClick={props.addOrRemoveFromFavs}
+                >
+                  🖤
+                </button>
                 <div className="card-body">
                   <h5 className="card-title">{oneMovie.title}</h5>
-                  <p>Popularidad: {oneMovie.popularity}</p>
+                  <p>Estreno: {oneMovie.release_date}</p>
                   <p className="card-text">
                     {oneMovie.overview.substring(0, 200)}...
                   </p>

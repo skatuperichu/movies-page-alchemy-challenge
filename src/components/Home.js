@@ -5,22 +5,22 @@ function Home() {
     <>
       <section className="container">
         <div>
-          <h2 className="home-text1">Bienvenido/a a la pagina de peliculas!</h2>
+          <h2 className="home-text1">Bienvenido/a a la página de películas!</h2>
         </div>
         <div>
           <h3 className="home-text2">
-            Aqui podras encontrar peliculas que se encuentran hoy en cartelera
+            Aquí podrás encontrar películas que se encuentran hoy en cartelera
           </h3>
           <h4 className="home-text3">
-            Inicia sesion <Link to="/login">aqui</Link> con los siguientes
+            Inicia sesión <Link to="/login">aquí</Link> con los siguientes
             datos:
             <h4>
-              <b>email:</b> 123@123.com <br />
-              <b>contraseña:</b> 123
+              <b>email:</b> challenge@alkemy.org <br />
+              <b>contraseña:</b> react
             </h4>
           </h4>
           <h4 className="home-text2">
-            Puedes escribir la pelicula que desees en el buscador o ingresar al
+            Puedes escribir la película que desees en el buscador o ingresar al
             listado
           </h4>
         </div>

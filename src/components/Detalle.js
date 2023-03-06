@@ -81,7 +81,7 @@ function Detalle() {
                 <li>
                   <p>
                     <i>
-                      Para más información ingresa
+                      Para más información ingresa {`${" "}`}
                       <Link to={`${movie.homepage}`}>aquí</Link>
                     </i>
                   </p>

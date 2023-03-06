@@ -12,9 +12,13 @@ import Home from "./components/Home";
 //Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/body.css";
+import "./styles/app.css";
 import Buscador from "./components/Buscador";
 
 function App() {
+  const addOrRemoveFromFavs = () => {
+    console.log("jooooya");
+  };
   return (
     <>
       <div>
@@ -22,10 +26,13 @@ function App() {
         <div className="body-container">
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/buscador" element={<Buscador />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/listado" element={<Listado />} />
+            <Route
+              path="/listado"
+              element={<Listado addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+            />
             <Route path="/detalle" element={<Detalle />} />
+            <Route path="/buscador" element={<Buscador />} />
             <Route path="/resultados" element={<Resultados />} />
           </Routes>
         </div>

@@ -1,6 +1,6 @@
 import axios from "axios"; // axios me permite hacer peticiones http para recibir apis
 import swal from "@sweetalert/with-react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate(); //como es un Hook lo guardo en una variable

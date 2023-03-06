@@ -28,14 +28,22 @@ function Header() {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <button type="button" className="btn btn-success">
-                  <Link className="nav-link" to="/">
+                  <Link
+                    className="nav-link"
+                    to="/"
+                    style={{ color: "#242424" }}
+                  >
                     Home
                   </Link>
                 </button>
               </li>
               <li className="nav-item">
                 <button type="button" className="btn btn-info">
-                  <Link className="nav-link" to="/listado">
+                  <Link
+                    className="nav-link"
+                    to="/listado"
+                    style={{ color: "#242424" }}
+                  >
                     Listado
                   </Link>
                 </button>
