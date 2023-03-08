@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
 import "../styles/body.css";
+import UseAnimations from "react-useanimations";
+import loading from "react-useanimations/lib/loading";
 
 function Detalle() {
   let token = sessionStorage.getItem("token");
@@ -37,9 +39,9 @@ function Detalle() {
       {!token && <Navigate to="/" />}
       {!movie && ( // condicional para: si no tengo movie, mostra el spinner (que es el cosito de Cargando.. de bootstrap)
         <div className="spinner-container">
-          <div class="spinner-border text-warning " role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
+          <span>
+            <UseAnimations animation={loading} />
+          </span>
         </div>
       )}
       {movie && ( //en este caso utilizo un condicional. como el state comienza null, si tengo movie mostrame todo lo siguiente. es una accion asincronica.

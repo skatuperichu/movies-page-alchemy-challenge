@@ -1,6 +1,8 @@
 //Libraries
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import UseAnimations from "react-useanimations";
+import video from "react-useanimations/lib/video";
 //Components
 import Buscador from "./Buscador";
 
@@ -9,6 +11,7 @@ function Header() {
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
+          <UseAnimations animation={video} size={45} strokeColor="white" />
           <Link className="navbar-brand" to="/">
             TUS PELICULAS
           </Link>
@@ -45,6 +48,17 @@ function Header() {
                     style={{ color: "#242424" }}
                   >
                     Listado
+                  </Link>
+                </button>
+              </li>
+              <li className="nav-item">
+                <button type="button" className="btn btn-danger">
+                  <Link
+                    className="nav-link"
+                    to="/favoritos"
+                    style={{ color: "#242424" }}
+                  >
+                    Favoritos
                   </Link>
                 </button>
               </li>

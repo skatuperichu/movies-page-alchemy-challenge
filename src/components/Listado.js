@@ -5,7 +5,7 @@ import swal from "@sweetalert/with-react";
 
 function Listado(props) {
   let token = sessionStorage.getItem("token"); // el token puede ser un string o null.
-  console.log(props);
+
   //LLAMADA A LA API:
 
   const [moviesList, setMoviesList] = useState([]);
@@ -17,7 +17,7 @@ function Listado(props) {
       .get(endPoint)
       .then((response) => {
         const dataDeLaApi = response.data;
-        console.log(dataDeLaApi);
+
         setMoviesList(dataDeLaApi.results);
       })
       .catch((error) => {
@@ -30,7 +30,7 @@ function Listado(props) {
         );
       });
   }, [setMoviesList]);
-  console.log(moviesList);
+
   return (
     //renderizado condicional (short circuit) "si no tengo el token redirijime a traves de <Navigate />"
     // "&&" operador AND logico, si lo primero es falso devuelve lo primero, si es verdadero devuelve lo segundo.
@@ -50,7 +50,8 @@ function Listado(props) {
                 />
                 <button
                   className="favourite-btn"
-                  onClick={props.addOrRemoveFromFavs}
+                  onClick={props.addOrRemoveFromFavs} //ejecutar la funcion que viajo en las props, osea la funcion addOrRemoveFromFavs.
+                  data-movie-id={oneMovie.id} // A traves de "atributos de datos" me guardo el id.
                 >
                   🖤
                 </button>

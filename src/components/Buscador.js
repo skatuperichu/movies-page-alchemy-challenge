@@ -39,7 +39,7 @@ function Buscador() {
           placeholder="Buscar..."
         ></input>
       </label>
-      <button type="submit" className="btn btn-danger ml-2">
+      <button type="submit" className="btn btn-warning ml-2">
         Buscar
       </button>
     </form>

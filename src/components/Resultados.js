@@ -29,7 +29,7 @@ function Resultados() {
       .catch((error) => {
         console.log(error);
       });
-  }, [keyword]);
+  }, [moviesResults]);
 
   return (
     <>

@@ -1,3 +1,9 @@
+//Libraries
+import UseAnimations from "react-useanimations";
+import github from "react-useanimations/lib/github";
+import linkedin from "react-useanimations/lib/linkedin";
+import instagram from "react-useanimations/lib/instagram";
+
 function Footer() {
   return (
     <div className="container">
@@ -9,7 +15,7 @@ function Footer() {
               className="nav-link px-2 text-muted"
               rel="noopener noreferrer" /*esto es para hacer referencias a enlaces externos a mi pag web.*/
             >
-              Instagram
+              <UseAnimations animation={instagram} size={45} />
             </a>
           </li>
           <li className="nav-item">
@@ -18,7 +24,7 @@ function Footer() {
               className="nav-link px-2 text-muted"
               rel="noopener noreferrer"
             >
-              Linkedin
+              <UseAnimations animation={linkedin} size={45} />
             </a>
           </li>
           <li className="nav-item">
@@ -27,7 +33,7 @@ function Footer() {
               className="nav-link px-2 text-muted"
               rel="noopener noreferrer"
             >
-              Github
+              <UseAnimations animation={github} size={45} />
             </a>
           </li>
         </ul>
