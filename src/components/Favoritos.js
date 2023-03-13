@@ -1,30 +1,26 @@
-import { useState, useEffect } from "react";
-
-function Favoritos() {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const favsInLocal = localStorage.getItem("favs");
-
-    console.log(favsInLocal);
-
-    if (favsInLocal !== null) {
-      let favsArray = JSON.parse(favsInLocal);
-      setFavorites(favsArray);
-    }
-  }, []);
+function Favoritos(props) {
+  if (!Array.isArray(props.favorites)) {
+    return <div>No hay favoritos por mostrar.</div>;
+  }
   return (
     <>
       <h2>Seccion de favoritos</h2>
+      <span className="text-success" style={{ fontSize: "20px" }}>
+        {props.favorites.length === 0 ? (
+          <>Tus peliculas favoritas son: {props.favorites.length} 😕</>
+        ) : (
+          <>Tus peliculas favoritas son: {props.favorites.length} 🤠</>
+        )}
+      </span>
       <div className="row">
-        {favorites.map((oneMovie, indice) => {
+        {props.favorites.map((oneMovie, indice) => {
           return (
             <div className="col-md-4" key={indice}>
               <div className="card my-4">
                 <img src={oneMovie.imgURL} className="card-img-top" alt="..." />
                 <button
                   className="favourite-btn"
-                  //onClick={props.addOrRemoveFromFavs}
+                  onClick={props.addOrRemoveFromFavs}
                   data-movie-id={oneMovie.id}
                 >
                   🖤

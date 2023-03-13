@@ -1,5 +1,6 @@
 //Libraries
 import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 //Components
 import Login from "./components/Login";
@@ -17,6 +18,18 @@ import Buscador from "./components/Buscador";
 import Favoritos from "./components/Favoritos";
 
 function App() {
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const favsInLocal = localStorage.getItem("favs");
+
+    if (favsInLocal !== null) {
+      const favsArray = JSON.parse(favsInLocal);
+      console.log(favsArray);
+      setFavorites(favsArray);
+    }
+  }, []);
+
   //Yo quiero que: cdo entre a la pagina saber si tengo o no favoritos. para eso:
 
   const favMovies = localStorage.getItem("favs");
@@ -54,20 +67,22 @@ function App() {
       id: btn.dataset.movieId, //aqui uso "atributos de datos". movieId es como yo nombre el id en Detalle.js
     }; // creo un objeto con todo. aclaro lo que quiero que contenga id, por eso id: ...
     //Mi objetivo es que cuando haga click en agregar a favoritos, me inserte esa nueva pelicula en tempMoviesFavs, por eso el push.
-    let movieIsInArray = tempMoviesFavs.find((oneMove) => {
-      return oneMove.id === movieData.id;
+    let movieIsInArray = tempMoviesFavs.find((oneMovie) => {
+      return oneMovie.id === movieData.id;
     }); //del array tempMoviesFavs quiero encontrar (find) aquella pelicula (oneMovie) cuyo id es igual a la pelicula que estoy queriendo guardar. osea para no favoritiar dos veces lo mismo
 
     if (!movieIsInArray) {
-      //si la pelicula no esta la agrego la localStorage
+      //si la pelicula no esta en el array la agrego la localStorage
       tempMoviesFavs.push(movieData); //con tempMoviesFavs traigo la info que me dio el localStorage, y con movieData tomo la info que quiero
       localStorage.setItem("favs", JSON.stringify(tempMoviesFavs)); //aca si guardo todo en localStorage
+      setFavorites(tempMoviesFavs); //actualizacion del estado
       console.log("se agrego la pelicula");
     } else {
       let deleteMovie = tempMoviesFavs.filter((oneMovie) => {
         return oneMovie.id !== movieData.id; // si la pelicula ya esta agregada filtro ese array, saco la pelicula y setear de nuevo el localStorage sin esa pelicula.
       });
       localStorage.setItem("favs", JSON.stringify(deleteMovie));
+      setFavorites(deleteMovie);
       console.log("se elimino la pelicula"); //
     }
   };
@@ -86,8 +101,19 @@ function App() {
             />
             <Route path="/detalle" element={<Detalle />} />
             <Route path="/buscador" element={<Buscador />} />
-            <Route path="/resultados" element={<Resultados />} />
-            <Route path="/favoritos" element={<Favoritos />} />
+            <Route
+              path="/resultados"
+              element={<Resultados addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+            />
+            <Route
+              path="/favoritos"
+              element={
+                <Favoritos
+                  favorites={favorites} //paso como prop al state favorites. lo llamo en Favoritos.js
+                  addOrRemoveFromFavs={addOrRemoveFromFavs}
+                />
+              }
+            />
           </Routes>
         </div>
         <Footer />

@@ -37,7 +37,12 @@ function Listado(props) {
     // un string es verdadero, si lo niego (!token) es falso.
     // si el token llega a ser null, estare negando un valor null (!token) y lo convierto en verdadero, por lo tanto devolvera lo segundo.
     <>
-      {!token && <Navigate to="/" />}
+      {!token &&
+        swal(
+          <div>
+            <h3>Debes inicar sesión para ver las películas</h3>
+          </div>
+        ) && <Navigate to="/" />}
       <div className="row">
         {moviesList.map((oneMovie, indice) => {
           return (
