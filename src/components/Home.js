@@ -5,23 +5,34 @@ function Home() {
     <>
       <section className="container">
         <div>
-          <h2 className="home-text1">Bienvenido/a a la página de películas!</h2>
+          <h2 className="home-text1">PELICULAS</h2>
         </div>
         <div>
           <h3 className="home-text2">
-            Aquí podrás encontrar películas que se encuentran hoy en cartelera
+            ENCUENTRA LAS MEJORES PELICULAS EN ESTRENO
           </h3>
           <h4 className="home-text3">
-            Inicia sesión <Link to="/login">aquí</Link> con los siguientes
-            datos:
-            <h4>
-              <b>email:</b> challenge@alkemy.org <br />
-              <b>contraseña:</b> react
-            </h4>
+            INICIA SESION <Link to="/login">AQUI</Link> CON LOS SIGUIENTES
+            DATOS:
+            <div
+              style={{
+                border: "1px solid white",
+                width: "30%",
+                marginLeft: "auto",
+                margin: "0 auto",
+              }}
+            >
+              <h4>
+                Email: <em>challenge@alkemy.org</em> <br />
+                Contraseña: <em>react</em>
+              </h4>
+            </div>
           </h4>
           <h4 className="home-text2">
-            Puedes escribir la película que desees en el buscador o ingresar al
-            listado
+            <em>
+              Puedes escribir la película que desees en el buscador o ingresar
+              al listado
+            </em>
           </h4>
         </div>
       </section>

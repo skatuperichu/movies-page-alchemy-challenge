@@ -1,18 +1,43 @@
+import swal from "@sweetalert/with-react";
+import { Navigate } from "react-router-dom";
 function Favoritos(props) {
+  let token = sessionStorage.getItem("token");
   if (!Array.isArray(props.favorites)) {
     return <div>No hay favoritos por mostrar.</div>;
   }
   return (
     <>
-      <h2>Seccion de favoritos</h2>
-      <span className="text-success" style={{ fontSize: "20px" }}>
-        {props.favorites.length === 0 ? (
-          <>Tus peliculas favoritas son: {props.favorites.length} 😕</>
+      {!token &&
+        swal({
+          text: "¡Debes iniciar sesión para ver tus peliculas favoritas!",
+        }) && <Navigate to="/" />}
+      <h2
+        style={{
+          color: "white",
+          fontFamily: "Arial, Helvetica, sans-serif",
+          fontSize: "30px",
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+      >
+        Tus favoritos ❤️️
+      </h2>
+      <div
+        style={{
+          color: "red",
+          fontFamily: "Arial, Helvetica, sans-serif",
+          fontSize: "30px",
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+      >
+        {props.favorites.length === 0 ? ( //or: !props.favorites.length ? ()
+          <>{props.favorites.length} 😕</>
         ) : (
-          <>Tus peliculas favoritas son: {props.favorites.length} 🤠</>
+          <>{props.favorites.length} 😎</>
         )}
-      </span>
-      <div className="row">
+      </div>
+      <div className="row m-1">
         {props.favorites.map((oneMovie, indice) => {
           return (
             <div className="col-md-4" key={indice}>

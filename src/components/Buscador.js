@@ -10,15 +10,13 @@ function Buscador() {
     const keyword = e.currentTarget.keyword.value.trim();
     {
       !token &&
-        swal(
-          <div>
-            <h3>Debes inicar sesion para ver las peliculas</h3>
-          </div>
-        ) && <Navigate to="/" />;
+        swal({ text: "Debes inicar sesion para ver las peliculas" }) && (
+          <Navigate to="/" />
+        );
     }
 
     if (keyword.length === 0 && token) {
-      swal(<h5>Tienes que escribir una palabra clave</h5>);
+      swal({ text: "Tienes que escribir una palabra clave" });
       return;
     } else {
       e.currentTarget.keyword.value = "";

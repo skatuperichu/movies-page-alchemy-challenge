@@ -38,16 +38,14 @@ function Listado(props) {
     // si el token llega a ser null, estare negando un valor null (!token) y lo convierto en verdadero, por lo tanto devolvera lo segundo.
     <>
       {!token &&
-        swal(
-          <div>
-            <h3>Debes inicar sesión para ver las películas</h3>
-          </div>
-        ) && <Navigate to="/" />}
-      <div className="row">
+        swal({
+          text: "¡Inicia sesión y mira el listado de peliculas!",
+        }) && <Navigate to="/" />}
+      <div className="row m-1">
         {moviesList.map((oneMovie, indice) => {
           return (
-            <div className="col-md-4" key={indice}>
-              <div className="card my-4">
+            <div className="col-md-4 p-1" key={indice}>
+              <div className="card md-4">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
                   className="card-img-top"

@@ -1,20 +1,23 @@
 //Libraries
 import { Link } from "react-router-dom";
-import swal from "sweetalert";
 import UseAnimations from "react-useanimations";
 import video from "react-useanimations/lib/video";
 //Components
 import Buscador from "./Buscador";
+//CSS
+import "../styles/app.css";
 
 function Header() {
+  const logOut = () => {
+    sessionStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
           <UseAnimations animation={video} size={45} strokeColor="white" />
-          <Link className="navbar-brand" to="/">
-            TUS PELICULAS
-          </Link>
+          <div className="navbar-brand">TUS PELICULAS</div>
           <button
             className="navbar-toggler"
             type="button"
@@ -30,7 +33,7 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <button type="button" className="btn btn-success">
+                <button type="button" className="btn btn-light">
                   <Link
                     className="nav-link"
                     to="/"
@@ -41,7 +44,7 @@ function Header() {
                 </button>
               </li>
               <li className="nav-item">
-                <button type="button" className="btn btn-info">
+                <button type="button" className="btn btn-light">
                   <Link
                     className="nav-link"
                     to="/listado"
@@ -52,7 +55,7 @@ function Header() {
                 </button>
               </li>
               <li className="nav-item">
-                <button type="button" className="btn btn-danger">
+                <button type="button" className="btn btn-light">
                   <Link
                     className="nav-link"
                     to="/favoritos"
@@ -63,6 +66,9 @@ function Header() {
                 </button>
               </li>
             </ul>
+            <button type="button" className="btn btn-danger" onClick={logOut}>
+              Cerrar Sesión
+            </button>
           </div>
           <Buscador />
         </div>

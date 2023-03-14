@@ -35,7 +35,7 @@ function Login() {
       // post es una peticion para enviar informacion. en este caso quiero enviar email y password.
       // necesito 2 cosas: URL del endpoint de la API y los datos que la API espera en formato de objeto {}
       .then((res) => {
-        swal(<h2>Perfecto! Ingresaste correctamente</h2>);
+        swal("¡Perfecto!", "Ingresaste correctamente", "success");
         const tokenRecibido = res.data.token;
         sessionStorage.setItem("token", tokenRecibido);
         navigate("/listado"); // para redireccionar
@@ -58,15 +58,16 @@ function Login() {
     <>
       <div className="row">
         <div className="col-6 offset-3">
-          <h3>Iniciar sesión</h3>
+          <h3 style={{ color: "#DAC12F" }}>Iniciar sesión</h3>
           <form onSubmit={submitHandler}>
             <label className="form-label d-block mt-2">
-              <span>Correo electronico:</span> <br />
+              <span style={{ color: "#DAC12F" }}>Correo electronico:</span>{" "}
+              <br />
               <input type="text" className="form-control" name="email"></input>
             </label>
             <br />
             <label className="form-label d-block mt-2">
-              <span>Contraseña:</span> <br />
+              <span style={{ color: "#DAC12F" }}>Contraseña:</span> <br />
               <input
                 type="password"
                 name="password"
@@ -74,7 +75,7 @@ function Login() {
               ></input>
             </label>
             <br />
-            <button type="submit" className="btn btn-dark">
+            <button type="submit" className="btn btn-light">
               Ingresar
             </button>
           </form>

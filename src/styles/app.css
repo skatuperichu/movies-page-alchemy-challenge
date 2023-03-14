@@ -1,6 +1,7 @@
 body {
-  background-color: sandybrown;
+  background-color: rgb(56, 56, 56);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  width: auto;
 }
 
 .favourite-btn {
@@ -16,4 +17,12 @@ body {
   top: 10px;
   border: none;
   font-size: 13px;
+}
+
+.navbar-nav li.nav-item button {
+  margin-right: 7px;
+}
+
+.navbar-brand {
+  color: #dac12f;
 }

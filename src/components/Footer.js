@@ -37,7 +37,15 @@ function Footer() {
             </a>
           </li>
         </ul>
-        <p className="text-center text-muted">Juan Clemente Davio</p>
+        <p
+          className="text-center"
+          style={{
+            color: "#DAC12F",
+            fontFamily: "Arial, Helvetica, sans-serif",
+          }}
+        >
+          Juan Clemente Davio
+        </p>
       </footer>
     </div>
   );

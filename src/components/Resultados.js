@@ -4,9 +4,9 @@ import axios from "axios";
 import swal from "sweetalert";
 
 function Resultados() {
+  let token = sessionStorage.getItem("token");
   let query = new URLSearchParams(window.location.search);
   let keyword = query.get("palabra-clave");
-  // https://api.themoviedb.org/3/search/movie?api_key=291df7c7a5b8101ef8c6e54198884ab3&language=en-US&page=1&include_adult=false
 
   const [moviesResults, setMoviesResults] = useState([]);
 
@@ -17,14 +17,6 @@ function Resultados() {
       .then((response) => {
         const moviesArray = response.data.results;
         setMoviesResults(moviesArray);
-        if (moviesArray.length === 0) {
-          swal(
-            <div>
-              <h3>Ups! Tu busqueda no ha tenido resultados</h3>
-              <h4>Por favor intenta con otra palabra</h4>
-            </div>
-          );
-        }
       })
       .catch((error) => {
         console.log(error);
@@ -33,9 +25,24 @@ function Resultados() {
 
   return (
     <>
-      <h2>Resultados con: "{keyword}" </h2>
-
-      <div className="row">
+      {!token &&
+        swal(
+          <div>
+            <h3>Inicia sesion y busca cualquier pelicula</h3>
+          </div>
+        ) && <Navigate to="/" />}
+      <h2
+        style={{
+          color: "white",
+          fontFamily: "Arial, Helvetica, sans-serif",
+          fontSize: "30px",
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+      >
+        <em>"{keyword}" EN TUS PELICULAS</em>
+      </h2>
+      <div className="row m-1">
         {moviesResults.map((moviesResults, indice) => {
           return (
             <div className="col-md-3" key={indice}>
