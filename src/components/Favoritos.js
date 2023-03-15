@@ -1,5 +1,6 @@
 import swal from "@sweetalert/with-react";
 import { Navigate } from "react-router-dom";
+import "../styles/body.css";
 function Favoritos(props) {
   let token = sessionStorage.getItem("token");
   if (!Array.isArray(props.favorites)) {

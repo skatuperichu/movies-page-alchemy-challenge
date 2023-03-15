@@ -89,7 +89,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div style={{ backgroundColor: "rgb(56, 56, 56)" }}>
         <Header />
         <div className="body-container">
           <Routes>
